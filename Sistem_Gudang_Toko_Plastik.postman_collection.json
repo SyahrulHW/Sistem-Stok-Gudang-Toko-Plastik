@@ -1,0 +1,1099 @@
+{
+	"info": {
+		"_postman_id": "4b6b27e8-97c2-4a7b-a25e-a34db22f9dbb",
+		"name": "Sistem Gudang Toko Plastik",
+		"description": "Postman Collection for Sistem Gudang Toko Plastik web endpoints. Please run 'Login' first to authenticate your session.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin@plastik.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login (Karyawan)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "karyawan@plastik.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dashboard",
+			"item": [
+				{
+					"name": "Get Dashboard Summary",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "List Categories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/categories",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Category (Admin Only)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nama_kategori",
+									"value": "Plastik OPP",
+									"type": "text"
+								},
+								{
+									"key": "deskripsi",
+									"value": "Kategori untuk plastik OPP perekat transparan",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/categories",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category (Admin Only)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nama_kategori",
+									"value": "Plastik OPP Premium",
+									"type": "text"
+								},
+								{
+									"key": "deskripsi",
+									"value": "Kategori diperbarui",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/categories/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category (Admin Only)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/categories/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Suppliers",
+			"item": [
+				{
+					"name": "List Suppliers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/suppliers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"suppliers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Supplier (Admin Only)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "kode_supplier",
+									"value": "SPL-006",
+									"type": "text"
+								},
+								{
+									"key": "nama_supplier",
+									"value": "PT Plastik Jaya Sakti",
+									"type": "text"
+								},
+								{
+									"key": "alamat",
+									"value": "Jl. Industri No. 45, Jakarta",
+									"type": "text"
+								},
+								{
+									"key": "telepon",
+									"value": "081234567890",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "sakti@plastikjaya.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/suppliers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"suppliers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Supplier (Admin Only)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "kode_supplier",
+									"value": "SPL-006",
+									"type": "text"
+								},
+								{
+									"key": "nama_supplier",
+									"value": "PT Plastik Jaya Sakti Perkasa",
+									"type": "text"
+								},
+								{
+									"key": "alamat",
+									"value": "Jl. Industri No. 45, Jakarta Barat",
+									"type": "text"
+								},
+								{
+									"key": "telepon",
+									"value": "081234567890",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "info@plastikjaya.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/suppliers/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"suppliers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Supplier (Admin Only)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/suppliers/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"suppliers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "List Products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/products?search=kresek&category_id=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "kresek",
+									"description": "Optional search term"
+								},
+								{
+									"key": "category_id",
+									"value": "1",
+									"description": "Optional category filter"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product (Admin Only)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "kode_produk",
+									"value": "PRD-999",
+									"type": "text"
+								},
+								{
+									"key": "nama_produk",
+									"value": "Plastik PE Bening 10x20",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "supplier_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "satuan",
+									"value": "pack",
+									"type": "text"
+								},
+								{
+									"key": "harga_beli",
+									"value": "8500",
+									"type": "text"
+								},
+								{
+									"key": "harga_jual",
+									"value": "11000",
+									"type": "text"
+								},
+								{
+									"key": "stok",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "minimum_stok",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "foto",
+									"type": "file",
+									"src": [],
+									"description": "Optional image file",
+									"disabled": true
+								},
+								{
+									"key": "deskripsi",
+									"value": "Plastik pembungkus tebal higienis",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product (Admin Only)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "kode_produk",
+									"value": "PRD-999",
+									"type": "text"
+								},
+								{
+									"key": "nama_produk",
+									"value": "Plastik PE Bening Super tebal 10x20",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "supplier_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "satuan",
+									"value": "pack",
+									"type": "text"
+								},
+								{
+									"key": "harga_beli",
+									"value": "9000",
+									"type": "text"
+								},
+								{
+									"key": "harga_jual",
+									"value": "12000",
+									"type": "text"
+								},
+								{
+									"key": "stok",
+									"value": "120",
+									"type": "text"
+								},
+								{
+									"key": "minimum_stok",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "deskripsi",
+									"value": "Deskripsi terupdate",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/products/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product (Admin Only)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/products/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Barang Masuk",
+			"item": [
+				{
+					"name": "List Barang Masuk",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/barang-masuk",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"barang-masuk"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Barang Masuk",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nomor_transaksi",
+									"value": "BM-20260608-0001",
+									"type": "text"
+								},
+								{
+									"key": "product_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "supplier_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "tanggal",
+									"value": "2026-06-08",
+									"type": "text"
+								},
+								{
+									"key": "jumlah",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "harga_beli",
+									"value": "10000",
+									"type": "text"
+								},
+								{
+									"key": "total_harga",
+									"value": "500000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/barang-masuk",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"barang-masuk"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Barang Masuk",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nomor_transaksi",
+									"value": "BM-20260608-0001",
+									"type": "text"
+								},
+								{
+									"key": "product_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "supplier_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "tanggal",
+									"value": "2026-06-08",
+									"type": "text"
+								},
+								{
+									"key": "jumlah",
+									"value": "60",
+									"type": "text"
+								},
+								{
+									"key": "harga_beli",
+									"value": "10000",
+									"type": "text"
+								},
+								{
+									"key": "total_harga",
+									"value": "600000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/barang-masuk/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"barang-masuk",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Barang Masuk (Admin Only)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/barang-masuk/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"barang-masuk",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Barang Keluar",
+			"item": [
+				{
+					"name": "List Barang Keluar",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/barang-keluar",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"barang-keluar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Barang Keluar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nomor_transaksi",
+									"value": "BK-20260608-0001",
+									"type": "text"
+								},
+								{
+									"key": "product_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "tanggal",
+									"value": "2026-06-08",
+									"type": "text"
+								},
+								{
+									"key": "jumlah",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "keterangan",
+									"value": "Penjualan Toko A",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/barang-keluar",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"barang-keluar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Barang Keluar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nomor_transaksi",
+									"value": "BK-20260608-0001",
+									"type": "text"
+								},
+								{
+									"key": "product_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "tanggal",
+									"value": "2026-06-08",
+									"type": "text"
+								},
+								{
+									"key": "jumlah",
+									"value": "8",
+									"type": "text"
+								},
+								{
+									"key": "keterangan",
+									"value": "Revisi Penjualan Toko A",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/barang-keluar/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"barang-keluar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Barang Keluar (Admin Only)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/barang-keluar/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"barang-keluar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reports & Exports",
+			"item": [
+				{
+					"name": "Reports Page",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/reports",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"reports"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Print Reports (HTML/PDF)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/reports/print",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"reports",
+								"print"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export CSV Report",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/reports/export",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"reports",
+								"export"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000",
+			"type": "string"
+		}
+	]
+}
