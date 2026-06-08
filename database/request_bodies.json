@@ -1,0 +1,100 @@
+{
+  "authentication": {
+    "login_admin": {
+      "email": "admin@plastik.com",
+      "password": "password"
+    },
+    "login_karyawan": {
+      "email": "karyawan@plastik.com",
+      "password": "password"
+    }
+  },
+  "categories": {
+    "create": {
+      "nama_kategori": "Plastik OPP",
+      "deskripsi": "Kategori untuk plastik pembungkus OPP berperekat"
+    },
+    "update": {
+      "nama_kategori": "Plastik OPP Premium",
+      "deskripsi": "Kategori OPP dengan kualitas premium"
+    }
+  },
+  "suppliers": {
+    "create": {
+      "kode_supplier": "SPL-006",
+      "nama_supplier": "PT Plastik Jaya Sakti",
+      "alamat": "Jl. Industri No. 45, Jakarta",
+      "telepon": "081234567890",
+      "email": "sakti@plastikjaya.com"
+    },
+    "update": {
+      "kode_supplier": "SPL-006",
+      "nama_supplier": "PT Plastik Jaya Sakti Perkasa",
+      "alamat": "Jl. Industri No. 45, Jakarta Barat",
+      "telepon": "081234567890",
+      "email": "info@plastikjaya.com"
+    }
+  },
+  "products": {
+    "create": {
+      "kode_produk": "PRD-999",
+      "nama_produk": "Plastik PE Bening 10x20",
+      "category_id": 1,
+      "supplier_id": 1,
+      "satuan": "pack",
+      "harga_beli": 8500.0,
+      "harga_jual": 11000.0,
+      "stok": 100,
+      "minimum_stok": 10,
+      "deskripsi": "Plastik pembungkus tebal higienis"
+    },
+    "update": {
+      "kode_produk": "PRD-999",
+      "nama_produk": "Plastik PE Bening Super tebal 10x20",
+      "category_id": 1,
+      "supplier_id": 1,
+      "satuan": "pack",
+      "harga_beli": 9000.0,
+      "harga_jual": 12000.0,
+      "stok": 120,
+      "minimum_stok": 15,
+      "deskripsi": "Deskripsi terupdate"
+    }
+  },
+  "barang_masuk": {
+    "create": {
+      "nomor_transaksi": "BM-20260608-0001",
+      "product_id": 1,
+      "supplier_id": 1,
+      "tanggal": "2026-06-08",
+      "jumlah": 50,
+      "harga_beli": 10000.0,
+      "total_harga": 500000.0
+    },
+    "update": {
+      "nomor_transaksi": "BM-20260608-0001",
+      "product_id": 1,
+      "supplier_id": 1,
+      "tanggal": "2026-06-08",
+      "jumlah": 60,
+      "harga_beli": 10000.0,
+      "total_harga": 600000.0
+    }
+  },
+  "barang_keluar": {
+    "create": {
+      "nomor_transaksi": "BK-20260608-0001",
+      "product_id": 1,
+      "tanggal": "2026-06-08",
+      "jumlah": 5,
+      "keterangan": "Penjualan Toko A"
+    },
+    "update": {
+      "nomor_transaksi": "BK-20260608-0001",
+      "product_id": 1,
+      "tanggal": "2026-06-08",
+      "jumlah": 8,
+      "keterangan": "Revisi Penjualan Toko A"
+    }
+  }
+}

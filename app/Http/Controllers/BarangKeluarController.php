@@ -18,6 +18,13 @@ class BarangKeluarController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
+        if (request()->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'data' => $barangKeluars
+            ]);
+        }
+
         return view('barang_keluar.index', compact('barangKeluars'));
     }
 
@@ -68,18 +75,35 @@ class BarangKeluarController extends Controller
 
         // Core Business Rule: Outgoing quantity must not exceed available stock
         if ($request->jumlah > $product->stok) {
+            if ($request->wantsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Jumlah barang keluar melebihi stok tersedia.',
+                    'errors' => [
+                        'jumlah' => ['Jumlah barang keluar (' . $request->jumlah . ' ' . $product->satuan . ') melebihi stok tersedia (' . $product->stok . ' ' . $product->satuan . ').']
+                    ]
+                ], 422);
+            }
             return back()->withErrors([
                 'jumlah' => 'Jumlah barang keluar (' . $request->jumlah . ' ' . $product->satuan . ') melebihi stok tersedia (' . $product->stok . ' ' . $product->satuan . ').'
             ])->withInput();
         }
 
-        BarangKeluar::create([
+        $barangKeluar = BarangKeluar::create([
             'nomor_transaksi' => $request->nomor_transaksi,
             'product_id' => $request->product_id,
             'tanggal' => $request->tanggal,
             'jumlah' => $request->jumlah,
             'keterangan' => $request->keterangan,
         ]);
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Transaksi barang keluar berhasil disimpan.',
+                'data' => $barangKeluar
+            ], 201);
+        }
 
         return redirect()->route('barang-keluar.index')->with('success', 'Transaksi barang keluar berhasil disimpan.');
     }
@@ -121,6 +145,15 @@ class BarangKeluarController extends Controller
         $maxAvailableStock = $product->stok + $originalJumlah;
 
         if ($request->jumlah > $maxAvailableStock) {
+            if ($request->wantsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Jumlah barang keluar melebihi batas stok yang tersedia.',
+                    'errors' => [
+                        'jumlah' => ['Jumlah barang keluar (' . $request->jumlah . ' ' . $product->satuan . ') melebihi batas stok yang tersedia (' . $maxAvailableStock . ' ' . $product->satuan . ').']
+                    ]
+                ], 422);
+            }
             return back()->withErrors([
                 'jumlah' => 'Jumlah barang keluar (' . $request->jumlah . ' ' . $product->satuan . ') melebihi batas stok yang tersedia (' . $maxAvailableStock . ' ' . $product->satuan . ').'
             ])->withInput();
@@ -134,6 +167,14 @@ class BarangKeluarController extends Controller
             'keterangan' => $request->keterangan,
         ]);
 
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Transaksi barang keluar berhasil diperbarui.',
+                'data' => $barangKeluar
+            ]);
+        }
+
         return redirect()->route('barang-keluar.index')->with('success', 'Transaksi barang keluar berhasil diperbarui.');
     }
 
@@ -144,6 +185,13 @@ class BarangKeluarController extends Controller
     {
         // Eloquent booted model event automatically restores stock back to product when transaction deleted
         $barangKeluar->delete();
+
+        if (request()->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Transaksi barang keluar berhasil dihapus.'
+            ]);
+        }
 
         return redirect()->route('barang-keluar.index')->with('success', 'Transaksi barang keluar berhasil dihapus.');
     }

@@ -19,6 +19,13 @@ class CategoryController extends Controller
                   ->orWhere('deskripsi', 'like', "%{$search}%");
         })->orderBy('nama_kategori', 'asc')->get();
 
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'data' => $categories
+            ]);
+        }
+
         return view('categories.index', compact('categories', 'search'));
     }
 
@@ -43,7 +50,15 @@ class CategoryController extends Controller
             'nama_kategori.max' => 'Nama kategori maksimal 255 karakter.',
         ]);
 
-        Category::create($validated);
+        $category = Category::create($validated);
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Kategori berhasil ditambahkan.',
+                'data' => $category
+            ], 201);
+        }
 
         return redirect()->route('categories.index')->with('success', 'Kategori berhasil ditambahkan.');
     }
@@ -71,6 +86,14 @@ class CategoryController extends Controller
 
         $category->update($validated);
 
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Kategori berhasil diperbarui.',
+                'data' => $category
+            ]);
+        }
+
         return redirect()->route('categories.index')->with('success', 'Kategori berhasil diperbarui.');
     }
 
@@ -81,11 +104,24 @@ class CategoryController extends Controller
     {
         // Business Rule: Can't delete if category has products
         if ($category->products()->count() > 0) {
+            if (request()->wantsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Kategori tidak dapat dihapus karena sedang digunakan oleh produk.'
+                ], 400);
+            }
             return redirect()->route('categories.index')
                 ->with('error', 'Kategori tidak dapat dihapus karena sedang digunakan oleh produk.');
         }
 
         $category->delete();
+
+        if (request()->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Kategori berhasil dihapus.'
+            ]);
+        }
 
         return redirect()->route('categories.index')->with('success', 'Kategori berhasil dihapus.');
     }

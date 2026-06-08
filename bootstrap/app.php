@@ -15,9 +15,24 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'role' => \App\Http\Middleware\RoleMiddleware::class,
         ]);
+
+        $middleware->validateCsrfTokens(except: [
+            'login',
+            'logout',
+            'categories',
+            'categories/*',
+            'suppliers',
+            'suppliers/*',
+            'products',
+            'products/*',
+            'barang-masuk',
+            'barang-masuk/*',
+            'barang-keluar',
+            'barang-keluar/*',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
-            fn (Request $request) => $request->is('api/*'),
+            fn (Request $request) => $request->is('api/*') || $request->expectsJson(),
         );
     })->create();

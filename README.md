@@ -11,9 +11,9 @@ Sistem Stok Gudang Toko Plastik adalah aplikasi manajemen inventaris yang diranc
 - **Laporan (Reporting):** Cetak laporan mutasi stok berdasarkan rentang waktu tertentu.
 
 ## 📐 Desain Database
-Berikut adalah struktur *Entity Relationship Diagram* (ERD) yang digunakan dalam sistem ini untuk memetakan hubungan antar tabel (seperti tabel barang, kategori, transaksi masuk, dan transaksi keluar):
+Berikut adalah struktur *Entity Relationship Diagram* (ERD) yang digunakan dalam sistem ini untuk memetakan hubungan antar tabel:
 
-![Entity Relationship Diagram](documentation/ERD/erd-db.png)
+![Entity Relationship Diagram](documentation/erd-db.png)
 
 ## 💻 Teknologi yang Digunakan
 - **Frontend:** HTML, CSS, JavaScript, Bootstrap / TailwindCSS
@@ -30,6 +30,5 @@ Pastikan Anda telah menginstal perangkat lunak berikut sebelum menjalankan aplik
 Ikuti langkah-langkah di bawah ini untuk menjalankan proyek secara lokal:
 
 1. **Clone Repositori**
-   Buka terminal/CMD dan jalankan perintah:
-   ```bash
+```bash
    git clone [https://github.com/SyahrulHW/Sistem-Stok-Gudang-Toko-Plastik.git](https://github.com/SyahrulHW/Sistem-Stok-Gudang-Toko-Plastik.git)

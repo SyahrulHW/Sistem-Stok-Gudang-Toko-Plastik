@@ -82,6 +82,38 @@ class DashboardController extends Controller
             ->limit(5)
             ->get();
 
+        if (request()->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'data' => [
+                    'kpi' => [
+                        'total_products' => $totalProducts,
+                        'total_categories' => $totalCategories,
+                        'total_suppliers' => $totalSuppliers,
+                        'total_barang_masuk' => $totalBarangMasuk,
+                        'total_barang_keluar' => $totalBarangKeluar,
+                        'total_stok_tersedia' => $totalStokTersedia,
+                    ],
+                    'low_stock_products' => $lowStockProducts,
+                    'charts' => [
+                        'monthly_trans' => [
+                            'labels' => $monthsLabels,
+                            'barang_masuk' => $chartMasukData,
+                            'barang_keluar' => $chartKeluarData,
+                        ],
+                        'category_stock' => [
+                            'labels' => $categoryLabels,
+                            'data' => $categoryStocks,
+                        ]
+                    ],
+                    'recent_transactions' => [
+                        'barang_masuk' => $recentMasuk,
+                        'barang_keluar' => $recentKeluar,
+                    ]
+                ]
+            ]);
+        }
+
         return view('dashboard', compact(
             'totalProducts',
             'totalCategories',

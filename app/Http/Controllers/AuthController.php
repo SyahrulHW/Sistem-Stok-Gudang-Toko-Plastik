@@ -37,8 +37,26 @@ class AuthController extends Controller
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
 
+            if ($request->wantsJson()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Selamat datang kembali, ' . Auth::user()->name . '!',
+                    'user' => Auth::user()
+                ]);
+            }
+
             return redirect()->intended(route('dashboard'))
                 ->with('success', 'Selamat datang kembali, ' . Auth::user()->name . '!');
+        }
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Email atau password yang Anda masukkan salah.',
+                'errors' => [
+                    'email' => ['Email atau password yang Anda masukkan salah.']
+                ]
+            ], 422);
         }
 
         return back()->withErrors([
@@ -54,6 +72,13 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Anda telah berhasil keluar dari sistem.'
+            ]);
+        }
 
         return redirect()->route('login')->with('success', 'Anda telah berhasil keluar dari sistem.');
     }

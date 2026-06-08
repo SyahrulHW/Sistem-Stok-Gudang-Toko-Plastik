@@ -19,6 +19,13 @@ class BarangMasukController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
+        if (request()->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'data' => $barangMasuks
+            ]);
+        }
+
         return view('barang_masuk.index', compact('barangMasuks'));
     }
 
@@ -71,7 +78,15 @@ class BarangMasukController extends Controller
 
         $validated['total_harga'] = $validated['jumlah'] * $validated['harga_beli'];
 
-        BarangMasuk::create($validated);
+        $barangMasuk = BarangMasuk::create($validated);
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Transaksi barang masuk berhasil disimpan.',
+                'data' => $barangMasuk
+            ], 201);
+        }
 
         return redirect()->route('barang-masuk.index')->with('success', 'Transaksi barang masuk berhasil disimpan.');
     }
@@ -112,6 +127,14 @@ class BarangMasukController extends Controller
 
         $barangMasuk->update($validated);
 
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Transaksi barang masuk berhasil diperbarui.',
+                'data' => $barangMasuk
+            ]);
+        }
+
         return redirect()->route('barang-masuk.index')->with('success', 'Transaksi barang masuk berhasil diperbarui.');
     }
 
@@ -122,6 +145,13 @@ class BarangMasukController extends Controller
     {
         // Eloquent booted model event automatically subtracts stock from product when transaction deleted
         $barangMasuk->delete();
+
+        if (request()->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Transaksi barang masuk berhasil dihapus.'
+            ]);
+        }
 
         return redirect()->route('barang-masuk.index')->with('success', 'Transaksi barang masuk berhasil dihapus.');
     }

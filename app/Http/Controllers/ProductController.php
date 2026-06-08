@@ -32,6 +32,13 @@ class ProductController extends Controller
             ->orderBy('kode_produk', 'asc')
             ->get();
 
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'data' => $products
+            ]);
+        }
+
         return view('products.index', compact('products', 'categories', 'search', 'categoryId'));
     }
 
@@ -82,7 +89,15 @@ class ProductController extends Controller
             $validated['foto'] = $path;
         }
 
-        Product::create($validated);
+        $product = Product::create($validated);
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Produk berhasil ditambahkan.',
+                'data' => $product
+            ], 201);
+        }
 
         return redirect()->route('products.index')->with('success', 'Produk berhasil ditambahkan.');
     }
@@ -141,6 +156,14 @@ class ProductController extends Controller
 
         $product->update($validated);
 
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Produk berhasil diperbarui.',
+                'data' => $product
+            ]);
+        }
+
         return redirect()->route('products.index')->with('success', 'Produk berhasil diperbarui.');
     }
 
@@ -151,6 +174,12 @@ class ProductController extends Controller
     {
         // Business Rule: Can't delete product if it has transaction history
         if ($product->barangMasuks()->count() > 0 || $product->barangKeluars()->count() > 0) {
+            if (request()->wantsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Produk tidak dapat dihapus karena memiliki riwayat transaksi barang masuk atau keluar.'
+                ], 400);
+            }
             return redirect()->route('products.index')
                 ->with('error', 'Produk tidak dapat dihapus karena memiliki riwayat transaksi barang masuk atau keluar.');
         }
@@ -161,6 +190,13 @@ class ProductController extends Controller
         }
 
         $product->delete();
+
+        if (request()->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Produk berhasil dihapus.'
+            ]);
+        }
 
         return redirect()->route('products.index')->with('success', 'Produk berhasil dihapus.');
     }

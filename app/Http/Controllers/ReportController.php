@@ -26,6 +26,20 @@ class ReportController extends Controller
         $startDateStr = $dateRange['start']->translatedFormat('d F Y');
         $endDateStr = $dateRange['end']->translatedFormat('d F Y');
 
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'data' => [
+                    'type' => $type,
+                    'filter' => $filter,
+                    'date' => $dateInput,
+                    'start_date' => $startDateStr,
+                    'end_date' => $endDateStr,
+                    'records' => $data
+                ]
+            ]);
+        }
+
         return view('reports.index', compact('data', 'type', 'filter', 'dateInput', 'startDateStr', 'endDateStr'));
     }
 

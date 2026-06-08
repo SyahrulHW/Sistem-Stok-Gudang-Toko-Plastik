@@ -22,6 +22,13 @@ class SupplierController extends Controller
                   ->orWhere('email', 'like', "%{$search}%");
         })->orderBy('kode_supplier', 'asc')->get();
 
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'data' => $suppliers
+            ]);
+        }
+
         return view('suppliers.index', compact('suppliers', 'search'));
     }
 
@@ -51,7 +58,15 @@ class SupplierController extends Controller
             'email.email' => 'Format email tidak valid.',
         ]);
 
-        Supplier::create($validated);
+        $supplier = Supplier::create($validated);
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Supplier berhasil ditambahkan.',
+                'data' => $supplier
+            ], 201);
+        }
 
         return redirect()->route('suppliers.index')->with('success', 'Supplier berhasil ditambahkan.');
     }
@@ -84,6 +99,14 @@ class SupplierController extends Controller
 
         $supplier->update($validated);
 
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Supplier berhasil diperbarui.',
+                'data' => $supplier
+            ]);
+        }
+
         return redirect()->route('suppliers.index')->with('success', 'Supplier berhasil diperbarui.');
     }
 
@@ -94,17 +117,36 @@ class SupplierController extends Controller
     {
         // Business Rule: Can't delete if supplier is linked to products
         if ($supplier->products()->count() > 0) {
+            if (request()->wantsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Supplier tidak dapat dihapus karena sedang menyediakan produk di sistem.'
+                ], 400);
+            }
             return redirect()->route('suppliers.index')
                 ->with('error', 'Supplier tidak dapat dihapus karena sedang menyediakan produk di sistem.');
         }
 
         // Business Rule: Can't delete if supplier is linked to incoming goods
         if ($supplier->barangMasuks()->count() > 0) {
+            if (request()->wantsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Supplier tidak dapat dihapus karena terdapat riwayat barang masuk dari supplier ini.'
+                ], 400);
+            }
             return redirect()->route('suppliers.index')
                 ->with('error', 'Supplier tidak dapat dihapus karena terdapat riwayat barang masuk dari supplier ini.');
         }
 
         $supplier->delete();
+
+        if (request()->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Supplier berhasil dihapus.'
+            ]);
+        }
 
         return redirect()->route('suppliers.index')->with('success', 'Supplier berhasil dihapus.');
     }
