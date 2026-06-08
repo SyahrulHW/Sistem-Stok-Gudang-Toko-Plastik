@@ -13,7 +13,7 @@ Sistem Stok Gudang Toko Plastik adalah aplikasi manajemen inventaris yang diranc
 ## 📐 Desain Database
 Berikut adalah struktur *Entity Relationship Diagram* (ERD) yang digunakan dalam sistem ini untuk memetakan hubungan antar tabel (seperti tabel barang, kategori, transaksi masuk, dan transaksi keluar):
 
-![Entity Relationship Diagram](documentation/erd-db.png)
+![Entity Relationship Diagram](documentation/ERD/erd-db.png)
 
 ## 💻 Teknologi yang Digunakan
 - **Frontend:** HTML, CSS, JavaScript, Bootstrap / TailwindCSS
