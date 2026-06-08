@@ -1,0 +1,97 @@
+// Database Schema for Sistem Gudang Toko Plastik
+// Generated for dbdiagram.io
+
+Table users {
+  id bigint [pk, increment, note: "Primary Key"]
+  name varchar [not null]
+  email varchar [unique, not null]
+  email_verified_at timestamp [null]
+  password varchar [not null]
+  role varchar [default: "karyawan", note: "karyawan / admin / etc."]
+  remember_token varchar [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table password_reset_tokens {
+  email varchar [pk]
+  token varchar [not null]
+  created_at timestamp [null]
+}
+
+Table sessions {
+  id varchar [pk]
+  user_id bigint [null, note: "Foreign Key references users.id"]
+  ip_address varchar(45) [null]
+  user_agent text [null]
+  payload longtext [not null]
+  last_activity integer [not null]
+}
+
+Table categories {
+  id bigint [pk, increment, note: "Primary Key"]
+  nama_kategori varchar [not null]
+  deskripsi text [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table suppliers {
+  id bigint [pk, increment, note: "Primary Key"]
+  kode_supplier varchar [unique, not null]
+  nama_supplier varchar [not null]
+  alamat text [null]
+  telepon varchar [null]
+  email varchar [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table products {
+  id bigint [pk, increment, note: "Primary Key"]
+  kode_produk varchar [unique, not null]
+  nama_produk varchar [not null]
+  category_id bigint [not null, note: "Foreign Key references categories.id"]
+  supplier_id bigint [not null, note: "Foreign Key references suppliers.id"]
+  satuan varchar [not null]
+  harga_beli decimal(15,2) [not null]
+  harga_jual decimal(15,2) [not null]
+  stok integer [default: 0, not null]
+  minimum_stok integer [default: 0, not null]
+  foto varchar [null]
+  deskripsi text [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table barang_masuks {
+  id bigint [pk, increment, note: "Primary Key"]
+  nomor_transaksi varchar [unique, not null]
+  product_id bigint [not null, note: "Foreign Key references products.id"]
+  supplier_id bigint [not null, note: "Foreign Key references suppliers.id"]
+  tanggal date [not null]
+  jumlah integer [not null]
+  harga_beli decimal(15,2) [not null]
+  total_harga decimal(15,2) [not null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table barang_keluars {
+  id bigint [pk, increment, note: "Primary Key"]
+  nomor_transaksi varchar [unique, not null]
+  product_id bigint [not null, note: "Foreign Key references products.id"]
+  tanggal date [not null]
+  jumlah integer [not null]
+  keterangan text [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+// Relationships (Foreign Keys)
+Ref: sessions.user_id > users.id [delete: cascade]
+Ref: products.category_id > categories.id [delete: cascade]
+Ref: products.supplier_id > suppliers.id [delete: cascade]
+Ref: barang_masuks.product_id > products.id [delete: cascade]
+Ref: barang_masuks.supplier_id > suppliers.id [delete: cascade]
+Ref: barang_keluars.product_id > products.id [delete: cascade]
