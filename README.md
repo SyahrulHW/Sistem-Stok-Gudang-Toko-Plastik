@@ -15,6 +15,19 @@ Berikut adalah struktur *Entity Relationship Diagram* (ERD) yang digunakan dalam
 
 ![Entity Relationship Diagram](documentation/ERD/erd-db.png)
 
+Modul,Method,Endpoint (Route),Deskripsi & Akses
+Autentikasi,POST,/login,Autentikasi masuk untuk Hak Akses Admin & Karyawan
+Kategori Produk,POST,/categories,Menambahkan data kategori baru ke sistem
+,PUT,/categories/{id},Mengubah data kategori berdasarkan ID
+Supplier,POST,/suppliers,Menambahkan data supplier baru
+,PUT,/suppliers/{id},Mengubah data supplier berdasarkan ID
+Produk,POST,/products,Menambahkan data produk plastik baru
+,PUT,/products/{id},Mengubah rincian data produk berdasarkan ID
+Transaksi Masuk,POST,/barang-masuk,Mencatat transaksi barang masuk dan menambah stok
+,PUT,/barang-masuk/{id},Memperbarui/merevisi transaksi barang masuk berdasarkan ID
+Transaksi Keluar,POST,/barang-keluar,Mencatat transaksi barang keluar dan mengurangi stok
+,PUT,/barang-keluar/{id},Memperbarui/merevisi transaksi barang keluar berdasarkan ID
+
 ## 💻 Teknologi yang Digunakan
 - **Frontend:** HTML, CSS, JavaScript, Bootstrap / TailwindCSS
 - **Backend:** PHP (Laravel / CodeIgniter) / Node.js
