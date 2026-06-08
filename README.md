@@ -68,6 +68,10 @@ Aplikasi ini menyediakan endpoint web yang mendukung respons JSON (jika menyerta
 > File koleksi Postman tersedia di repositori ini dengan nama `Sistem_Gudang_Toko_Plastik.postman_collection.json`. Anda dapat langsung mengimpor file ini ke aplikasi Postman Anda untuk pengujian API.
 
 ---
+Testing & Dkumentasi API (Postman)
+
+
+---
 
 ## 💻 Teknologi yang Digunakan
 - **Backend:** PHP ^8.3 & Laravel ^13.8 (dengan Laravel Tinker)
