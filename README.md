@@ -30,5 +30,5 @@ Pastikan Anda telah menginstal perangkat lunak berikut sebelum menjalankan aplik
 Ikuti langkah-langkah di bawah ini untuk menjalankan proyek secara lokal:
 
 1. **Clone Repositori**
-```bash
+   ```bash
    git clone [https://github.com/SyahrulHW/Sistem-Stok-Gudang-Toko-Plastik.git](https://github.com/SyahrulHW/Sistem-Stok-Gudang-Toko-Plastik.git)
