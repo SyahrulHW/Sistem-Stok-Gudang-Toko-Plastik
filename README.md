@@ -70,8 +70,8 @@ Aplikasi ini menyediakan endpoint web yang mendukung respons JSON (jika menyerta
 ---
 ## Testing & Dokumentasi API (Postman)
 ### 1. Autentikasi
-- ![POST] login (Admin)
-(documentation/Screenshots/login admin.png)
+- ![POST] login (Admin) 
+(documentation/Screenshots/login-admin.png)
 
 
 
