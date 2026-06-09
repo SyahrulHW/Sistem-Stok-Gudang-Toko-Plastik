@@ -29,8 +29,7 @@ Aplikasi ini menyediakan endpoint web yang mendukung respons JSON (jika menyerta
 | **Autentikasi** | `GET` | `/login` | Guest | Menampilkan halaman login |
 | | `POST` | `/login` | Guest | Autentikasi masuk untuk Admin & Karyawan |
 | | `ANY` | `/logout` | Auth | Keluar dari sistem dan menghapus sesi |
-| **Dashboard** | `GET` | `/` | Auth | Menampilkan ringkasan total barang, stok tipis, & statistik |
-| **Kategori** | `GET` | `/categories` | Auth | Menampilkan daftar kategori produk plastik |
+| **Kategori Produk** | `GET` | `/categories` | Auth | Menampilkan daftar kategori produk plastik |
 | | `GET` | `/categories/create` | Admin Only | Form tambah kategori baru |
 | | `POST` | `/categories` | Admin Only | Menyimpan kategori baru ke sistem |
 | | `GET` | `/categories/{category}/edit` | Admin Only | Form edit kategori berdasarkan ID |
@@ -74,6 +73,11 @@ Aplikasi ini menyediakan endpoint web yang mendukung respons JSON (jika menyerta
 ![Login Admin](documentation/Screenshots/login-admin.png)
 - Login Karyawan (POST)
 ![Login Karyawan](documentation/Screenshots/login-karyawan.png)
+### 2. Kategori Produk
+- Create Kategori Produk (POST)
+![Create Kategori Produk](documentation/Screenshots/create-kategori.png)
+- Update Kategori Produk (PUT)
+![Update Kategori Produk](documentation/Screenshots/update-kategori.png)
 
 
 
