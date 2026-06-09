@@ -59,9 +59,6 @@ Aplikasi ini menyediakan endpoint web yang mendukung respons JSON (jika menyerta
 | | `GET` | `/barang-keluar/{barangKeluar}/edit` | Auth | Form edit transaksi barang keluar |
 | | `PUT` | `/barang-keluar/{barangKeluar}` | Auth | Memperbarui transaksi keluar dan menyesuaikan stok |
 | | `DELETE` | `/barang-keluar/{barangKeluar}` | Admin Only | Menghapus riwayat transaksi keluar dan menambah stok |
-| **Laporan** | `GET` | `/reports` | Auth | Menampilkan halaman laporan mutasi stok barang |
-| | `GET` | `/reports/print` | Auth | Mencetak laporan mutasi stok ke PDF / Cetak |
-| | `GET` | `/reports/export` | Auth | Mengekspor laporan mutasi stok ke format file CSV |
 
 > [!NOTE]
 > File koleksi Postman tersedia di repositori ini dengan nama `Sistem_Gudang_Toko_Plastik.postman_collection.json`. Anda dapat langsung mengimpor file ini ke aplikasi Postman Anda untuk pengujian API.
