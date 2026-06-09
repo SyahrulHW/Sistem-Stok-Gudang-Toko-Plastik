@@ -26,9 +26,8 @@ Aplikasi ini menyediakan endpoint web yang mendukung respons JSON (jika menyerta
 
 | Modul | Method | Endpoint (Route) | Hak Akses | Deskripsi & Kegunaan |
 | :--- | :---: | :--- | :--- | :--- |
-| **Autentikasi** | `GET` | `/login` | Guest | Menampilkan halaman login |
-| | `POST` | `/login` | Guest | Autentikasi masuk untuk Admin & Karyawan |
-| | `ANY` | `/logout` | Auth | Keluar dari sistem dan menghapus sesi |
+| **Autentikasi** | `POST` | `/login` | Admin Only | Autentikasi masuk untuk Karyawan |
+| | `POST` | `/login` | Karyawan Only | Autentikasi masuk untuk Karyawan |
 | **Kategori Produk** | `GET` | `/categories` | Auth | Menampilkan daftar kategori produk plastik |
 | | `GET` | `/categories/create` | Admin Only | Form tambah kategori baru |
 | | `POST` | `/categories` | Admin Only | Menyimpan kategori baru ke sistem |
