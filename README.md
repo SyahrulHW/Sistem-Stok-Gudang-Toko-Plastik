@@ -28,12 +28,8 @@ Aplikasi ini menyediakan endpoint web yang mendukung respons JSON (jika menyerta
 | :--- | :---: | :--- | :--- | :--- |
 | **Autentikasi** | `POST` | `/login` | Admin Only | Autentikasi masuk untuk Karyawan |
 | | `POST` | `/login` | Karyawan Only | Autentikasi masuk untuk Karyawan |
-| **Kategori Produk** | `GET` | `/categories` | Auth | Menampilkan daftar kategori produk plastik |
-| | `GET` | `/categories/create` | Admin Only | Form tambah kategori baru |
-| | `POST` | `/categories` | Admin Only | Menyimpan kategori baru ke sistem |
-| | `GET` | `/categories/{category}/edit` | Admin Only | Form edit kategori berdasarkan ID |
-| | `PUT` | `/categories/{category}` | Admin Only | Mengubah data kategori berdasarkan ID |
-| | `DELETE` | `/categories/{category}` | Admin Only | Menghapus data kategori dari database |
+| **Kategori Produk** | `POST` | `/categories/create` | Admin Only | Form tambah kategori baru |
+| | `PUT` | `/categories/update` | Admin Only | Form update kategori |
 | **Supplier** | `GET` | `/suppliers` | Auth | Menampilkan daftar supplier produk plastik |
 | | `GET` | `/suppliers/create` | Admin Only | Form tambah supplier baru |
 | | `POST` | `/suppliers` | Admin Only | Menyimpan data supplier baru |
