@@ -72,7 +72,8 @@ Aplikasi ini menyediakan endpoint web yang mendukung respons JSON (jika menyerta
 ### 1. Autentikasi
 - Login Admin (POST)
 ![Login Admin](documentation/Screenshots/login-admin.png)
-
+- Login Karyawan (POST)
+![Login Karyawan](documentation/Screenshots/login-karyawan.png)
 
 
 
