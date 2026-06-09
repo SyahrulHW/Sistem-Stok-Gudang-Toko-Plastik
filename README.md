@@ -83,6 +83,11 @@ Aplikasi ini menyediakan endpoint web yang mendukung respons JSON (jika menyerta
 ![Create Supplier](documentation/Screenshots/create-supplier.png)
 - Update Supplier (PUT)
 ![Update Supplier](documentation/Screenshots/update-supplier.png)
+### 4. Produk
+- Create Produk (POST)
+![Create Produk](documentation/Screenshots/create-produk.png)
+- Update Produk (PUT)
+![Update Produk](documentation/Screenshots/update-produk.png)
 
 
 
