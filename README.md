@@ -34,14 +34,10 @@ Aplikasi ini menyediakan endpoint web yang mendukung respons JSON (jika menyerta
 | | `PUT` | `/suppliers/update` | Admin Only | Form update supplier |
 | **Produk** | `POST` | `/products/create` | Admin Only | Form tambah produk baru |
 | | `PUT` | `/products/update` | Admin Only | Form update produk |
-| **Barang Masuk** | `POST` | `/barang-masuk/create` | Admin & Karyawan | Form tambah barang masuk baru |
-| | `PUT` | `/barang-masuk/update` | Admin & Karyawan | Form update barang masuk |
-| **Barang Keluar** | `GET` | `/barang-keluar` | Auth | Menampilkan riwayat transaksi keluar (outbound) |
-| | `GET` | `/barang-keluar/create` | Auth | Form tambah transaksi barang keluar |
-| | `POST` | `/barang-keluar` | Auth | Mencatat transaksi barang keluar dan mengurangi stok produk |
-| | `GET` | `/barang-keluar/{barangKeluar}/edit` | Auth | Form edit transaksi barang keluar |
-| | `PUT` | `/barang-keluar/{barangKeluar}` | Auth | Memperbarui transaksi keluar dan menyesuaikan stok |
-| | `DELETE` | `/barang-keluar/{barangKeluar}` | Admin Only | Menghapus riwayat transaksi keluar dan menambah stok |
+| **Barang Masuk** | `POST` | `/barang-masuk/create` | Admin & Karyawan | Form tambah transaksi barang masuk |
+| | `PUT` | `/barang-masuk/update` | Admin & Karyawan | Form update transaksi barang masuk |
+| **Barang Keluar** | `POST` | `/barang-keluar/create` | Admin & Karyawan | Form tambah transaksi barang keluar |
+| | `PUT` | `/barang-keluar/update` | Admin & Karyawan | Form update transaksi barang keluar |
 
 > [!NOTE]
 > File koleksi Postman tersedia di repositori ini dengan nama `Sistem_Gudang_Toko_Plastik.postman_collection.json`. Anda dapat langsung mengimpor file ini ke aplikasi Postman Anda untuk pengujian API.
