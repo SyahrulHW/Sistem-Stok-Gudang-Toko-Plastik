@@ -34,12 +34,8 @@ Aplikasi ini menyediakan endpoint web yang mendukung respons JSON (jika menyerta
 | | `PUT` | `/suppliers/update` | Admin Only | Form update supplier |
 | **Produk** | `POST` | `/products/create` | Admin Only | Form tambah produk baru |
 | | `PUT` | `/products/update` | Admin Only | Form update produk |
-| **Barang Masuk** | `GET` | `/barang-masuk` | Auth | Menampilkan riwayat transaksi masuk (inbound) |
-| | `GET` | `/barang-masuk/create` | Auth | Form tambah transaksi barang masuk |
-| | `POST` | `/barang-masuk` | Auth | Mencatat transaksi barang masuk dan menambah stok produk |
-| | `GET` | `/barang-masuk/{barangMasuk}/edit` | Auth | Form edit transaksi barang masuk |
-| | `PUT` | `/barang-masuk/{barangMasuk}` | Auth | Memperbarui transaksi masuk dan menyesuaikan stok |
-| | `DELETE` | `/barang-masuk/{barangMasuk}` | Admin Only | Menghapus riwayat transaksi masuk dan memotong stok |
+| **Barang Masuk** | `POST` | `/barang-masuk/create` | Admin & Karyawan | Form tambah barang masuk baru |
+| | `PUT` | `/barang-masuk/update` | Admin & Karyawan | Form update barang masuk |
 | **Barang Keluar** | `GET` | `/barang-keluar` | Auth | Menampilkan riwayat transaksi keluar (outbound) |
 | | `GET` | `/barang-keluar/create` | Auth | Form tambah transaksi barang keluar |
 | | `POST` | `/barang-keluar` | Auth | Mencatat transaksi barang keluar dan mengurangi stok produk |
