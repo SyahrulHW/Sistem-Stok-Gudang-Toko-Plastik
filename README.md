@@ -32,12 +32,8 @@ Aplikasi ini menyediakan endpoint web yang mendukung respons JSON (jika menyerta
 | | `PUT` | `/categories/update` | Admin Only | Form update kategori produk |
 | **Supplier** | `POST` | `/suppliers/create` | Admin Only | Form tambah supplier baru |
 | | `PUT` | `/suppliers/update` | Admin Only | Form update supplier |
-| **Produk** | `GET` | `/products` | Auth | Menampilkan produk (pencarian & filter kategori) |
-| | `GET` | `/products/create` | Admin Only | Form tambah produk plastik baru |
-| | `POST` | `/products` | Admin Only | Menyimpan data produk baru (termasuk unggah foto) |
-| | `GET` | `/products/{product}/edit` | Admin Only | Form edit rincian produk |
-| | `PUT` | `/products/{product}` | Admin Only | Mengubah rincian data produk berdasarkan ID |
-| | `DELETE` | `/products/{product}` | Admin Only | Menghapus data produk dari database |
+| **Produk** | `POST` | `/products/create` | Admin Only | Form tambah produk baru |
+| | `PUT` | `/products/update` | Admin Only | Form update produk |
 | **Barang Masuk** | `GET` | `/barang-masuk` | Auth | Menampilkan riwayat transaksi masuk (inbound) |
 | | `GET` | `/barang-masuk/create` | Auth | Form tambah transaksi barang masuk |
 | | `POST` | `/barang-masuk` | Auth | Mencatat transaksi barang masuk dan menambah stok produk |
